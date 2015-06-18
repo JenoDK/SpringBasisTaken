@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns='http://www.springframework.org/schema/beans'
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:schemaLocation='http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd'>
+	<bean id='persoonViewer' class='be.vdab.PersoonViewer'>
+		<constructor-arg>
+			<list>
+				<value>VOORNAAM</value>
+				<value>FAMILIENAAM</value>
+				<value>AANTAL_KINDEREN</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="persoonServiceImpl"/>
+	</bean>
+	<bean id='persoonDAOCSV' class='be.vdab.restclient.PersoonDAOCSV'>
+		<constructor-arg
+			value='/data/personen.csv' />
+	</bean>
+	<bean id='persoonDAOMeerdereRegels' class='be.vdab.restclient.PersoonDAOMeerdereRegels'>
+		<constructor-arg
+			value='/data/personen.txt' />
+	</bean>
+	<bean id='persoonServiceImpl' class='be.vdab.services.PersoonServiceImpl'>
+		<constructor-arg ref='persoonDAOCSV' />
+	</bean>
+</beans>

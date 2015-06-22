@@ -1,7 +1,6 @@
 package be.vdab;
 
 import java.io.IOException;
-import java.util.List;
 
 import be.vdab.services.PersoonService;
 
